@@ -1,0 +1,89 @@
+---
+title: About this website
+permalink: /about/
+---
+
+<h1>About this website</h1>
+
+<div class="content-box">
+  <p>
+      I built this website as I wanted a place of my own to highlight my projects,
+      my skills and share some of the things I've learned.
+      It is a static website built from scratch using HTML and CSS,
+      to ease deployment it uses <a href="https://shopify.github.io/liquid/">Liquid templates</a> and <a href="https://jekyllrb.com/docs/front-matter/">Front Matter</a>.
+      It is hosted on a private server and the content is served using <a href="https://jekyllrb.com/">Jekyll</a>.
+  </p>
+  
+  <h2>Features</h2>
+  <p>
+    Here are some features I've implemented so far:
+
+    <ul>
+      <li>Responsive layout for comfortable reading</li>
+      <li>Dark and light color schemes</li>
+      <li>Alternative text for images</li>
+      <li>Language-dependent syntax highligthing for code snippets</li>
+    </ul>
+
+    If you're interested and want to know more, take a look at the <a href="https://github.com/Stylback/stylback.se">GitHub repository</a>.
+  </p>
+  
+  <h2>Color schemes</h2>
+  <p>
+    There are two color schemes, one light and one dark.
+    The color schemed served to the visitor depends on the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">preference</a> provided by their system.
+    Each color scheme consists of six base colors and one CSS style-sheet for code snippets, which have their own colors.
+  </p>
+
+  <h4>Dark</h4>
+  <div class="color-box">
+    <div class="color-box-item" style="background-color: var(--background-primary-dark)">
+      <p style="color: white">#29292E</p>
+    </div>
+    <div class="color-box-item" style="background-color: var(--background-secondary-dark)">
+      <p style="color: white">#333344</p>
+    </div>
+    <div class="color-box-item" style="background-color: var(--text-primary-dark)">
+      <p style="color: black">#FFFFFF</p>
+    </div>
+    <div class="color-box-item" style="background-color: var(--text-secondary-dark)">
+      <p style="color: black">#CECECE</p>
+    </div>
+    <div class="color-box-item" style="background-color: var(--hyperlink-dark)">
+      <p style="color: black">#A2A2FF</p>
+    </div>
+    <div class="color-box-item" style="background-color: var(--link-hover-dark)">
+      <p style="color: white">#524E4E</p>
+    </div>
+  </div>
+  <p>Style sheet: <a href="https://github.com/jnurmine/Zenburn">Zenburn</a>.</p>
+
+  <h4>Light</h4>
+  <div class="color-box">
+    <div class="color-box-item" style="background-color: var(--background-primary-light)">
+      <p style="color: black">#F1F1F1</p>
+    </div>
+    <div class="color-box-item" style="background-color: var(--background-secondary-light)">
+      <p style="color: black">#DDDDDD</p>
+    </div>
+    <div class="color-box-item" style="background-color: var(--text-primary-light)">
+      <p style="color: white">#434D56</p>
+    </div>
+    <div class="color-box-item" style="background-color: var(--text-secondary-light)">
+      <p style="color: white">#374857</p>
+    </div>
+    <div class="color-box-item" style="background-color: var(--hyperlink-light)">
+      <p style="color: white">#4E4EB5</p>
+    </div>
+    <div class="color-box-item" style="background-color: var(--link-hover-light)">
+      <p style="color: black">#D6D0D0</p>
+    </div>
+    <p></p>
+  </div>
+  <p>Style sheet: zenburn-light, a customized version of regular Zenburn. See source code for details.</p>
+
+  <h2>Source code</h2>
+  <p>
+    The source code of the website and relevant documentation can be found on <a href="https://github.com/Stylback/stylback.se">GitHub</a>.
+  </p>
+</div>
