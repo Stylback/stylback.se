@@ -32,6 +32,10 @@ Disallow: /
 User-agent: GoogleOther
 Disallow: /
 
+# Crawler by OpenAI to train their LLMs
+User-agent: GPTBot
+Disallow: /
+
 # Advertisment optimization bot by Oracle
 User-agent: grapeshot
 Disallow: /

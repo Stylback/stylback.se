@@ -113,7 +113,7 @@ for item in list:
 
 A [security.txt](https://en.wikipedia.org/wiki/Security.txt) file is a text file that describes a how security researcher can make a responsible disclosure to you. The files is placed in the same location as `robots.txt`, usually the top-level directory.
 
-The [proposed standard](https://securitytxt.org/) consist of 9 fields (2 mandatory, 7 optional). I will implement 6 of them here.
+The [proposed standard](https://securitytxt.org/) consist of 9 fields (2 mandatory, 7 optional). I will implement 7 of them here.
 
 First step is to create a page containing your disclosure policy. It's a policy that outlines all that which a security researcher need to know if they have found or are looking for a vulnerability.
 
@@ -133,7 +133,7 @@ Preferred-Languages: en, sv
 Acknowledgments: https://www.stylback.se/thanks/
 ```
 
-Next is to sign the contents of the file using your public PGP-key, this is to ensure that the contents of the file have not been altered. The simplest way to sign it is with the following command:
+Next is to sign the contents of the file, this is to ensure that the contents of the file has not been altered and that it's indeed you that authored it. Signing a file will typically compress it into a binary file, as this is not a human-readable format we will instead create a clear signature. The simplest way to do a clear signature is using the `--clear-sign` option for gpg:
 
 ```bash
 gpg --clear-sign security.txt
@@ -159,7 +159,7 @@ Acknowledgments: https://www.stylback.se/thanks/
 -----END PGP SIGNATURE-----
 ```
 
-Now before you copy-paste this into your `security.txt` file you will need to verify that it matches your PGP key:
+Now before you copy-paste this into your `security.txt` file you should verify that it matches your PGP key:
 
 ```bash
 gpg --verify security.txt.asc
