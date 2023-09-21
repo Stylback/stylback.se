@@ -1,7 +1,7 @@
 ---
 title: The Role of Passwords
 categories: cybersecurity
-updated: 2023-09-16
+updated: 2023-09-17
 ---
 
 Passwords as we know them today have been around since [1961](https://en.wikipedia.org/wiki/Compatible_Time-Sharing_System#Features) and they still play a central role in cybersecurity today. Almost all digitial services and systems have some form of authentication built-in and most of them will utilize the combination of usernames and passwords to verify access to said service or system.
@@ -33,7 +33,7 @@ The first 4 passwords comes directly from a [list of most common passwords](http
 
 Passwords that are short and easy to remember can be expected to have low complexity and entropy. Passwords that are long and complex can be expected to have high entropy but hard to remember. One notable exception in our estimation are passphrases, which exhibits high entropy due to it's length while remaining easy to remember.
 
-It's worth mentioning that estimating password strength in this way is far from perfect, it does not take into account how easy a password is to guess nor does it distinguish between the possible symbol pool and the actual symbol pool. It's mostly used to estimate resiliency of a password against non-dictionary brute-force attacks, something we will touch on in an upcoming section. If you're interested and want to learn more about how to properly estimate password strength, take a look at [this](https://en.wikipedia.org/wiki/Password_strength) and [this](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29 "https://en.wikipedia.org/wiki/Entropy_(information_theory)").
+**However**, estimating password strength in this way is far from perfect. It does not take into account how easy a password is to guess nor does it distinguish between the possible symbol pool and the actual symbol pool. It's mostly used to estimate resiliency of a password against non-dictionary brute-force attacks, something we will touch on in an upcoming section. If you're interested and want to learn more about how to properly estimate password strength, take a look at [this](https://en.wikipedia.org/wiki/Password_strength) and [this](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29 "https://en.wikipedia.org/wiki/Entropy_(information_theory)").
 
 ### Why do password requirements look so similar?
 
@@ -45,7 +45,7 @@ Back in 2004, the National Institute of Standards and Technology (NIST) [release
 > 
 > \[...\] required passwords to be changed every two years and limited trials by locking an account for 24 hours after 6 successive failed authentication attempts.
 
-Following its publication, organizations amd businesses globally would come to adopt parts of this example in their own password policies. As an end-user, you might be familiar with the following requirements:
+Following its publication, organizations and businesses globally would come to adopt parts of this example in their own password policies. As an end-user, you might be familiar with the following requirements:
 
 > Your password must contain:
 > 
@@ -79,9 +79,9 @@ Lists like this one can also be found for specific systems. As an example, [here
 
 In those cases where common usernames and passwords are not enough, an attacker could extend their dictionaries by using information about the target. Personal information, names of family members, important dates and just regular words in their native language can all be used to increase the chances of success at the cost of computational time.
 
-Dictionary attacks are also a way to defeat passphrases. If you're otherwise unable to gain access and you know the system allows passphrases, why not just try all possible combinations of 3-5 english words? If we assume that there are 30.000 words in our symbol pool, that would gives us `44.6` bits of entropy for a 3 word passphrase and `74.4` bits for a 5 word passphrase. While still taking a significant amount of time to brute-force, it's not as dauntning as our `169.2`-bit estimation previously. Note that a symbol pool of 30.000 is to be expected only when generating random passphrases via software, our symbol pool decreases significantly if we make passphrases by hand as we tend to use common words in our language.
+Dictionary attacks are also a way to defeat passphrases. If you're otherwise unable to gain access and you know the system allows passphrases, why not just try all possible combinations of 3-5 english words? If we assume that there are 30.000 words in our symbol pool, that would gives us `44.6` bits of entropy for a 3 word passphrase and `74.4` bits for a 5 word passphrase. While still taking a significant amount of time to brute-force, it's not as dauntning as our `169.2`-bit estimation previously. Note that a symbol pool of 30.000 is to be expected only when generating random passphrases via software, our symbol pool decreases significantly if we make passphrases by hand as we tend to use words common to our language.
 
-While the common attacker tend be satisfied with trying for the lowest hanging fruits, attackers with the right motives and resources tend to be successfull unless there are other lines of defenses. Something as simple as blocking an IP address if they have multiple failed authentication attempts can be sufficient to stop all but the most resourceful and persistent attackers.
+While the regular attacker tend be satisfied with trying for the lowest hanging fruits, attackers with the right motives and resources tend to be successfull unless there are other lines of defenses. Something as simple as blocking an IP address that have multiple failed authentication attempts can be sufficient to stop all but the most resourceful and persistent attackers.
 
 ### What can be done?
 
@@ -95,5 +95,5 @@ The next question is; **what can be done?** As we're nearing the end of this art
 
 **As an employee**, you can ask that your workplace revise its password policy to allow yourself and your colleagues to use tools that increases security for all. Hardware-based authentication with a keycard or devices such as those made by [Yubico](https://www.yubico.com/) are well fitted for companies and organizations at a marginal cost.
 
-**As a decision maker**, you can better the security posture of your organization by keeping up to date with best practises. Lead by example, make security a priority throught the organization in both action and word. If security is not part of the organizational culture, efforts to increase it's security posture will fall flat. As described by Peter Drucker:
+**As a decision maker**, you can better the security posture of your organization by keeping up to date with best practises. Lead by example, make security a priority throughout the organization in both action and word. If security is not part of the organizational culture, efforts to increase it's security posture will fall flat. As described by Peter Drucker:
 > *"Culture eats strategy for breakfast."*

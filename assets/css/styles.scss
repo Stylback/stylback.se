@@ -255,6 +255,46 @@ ol {
     padding-left: 20px;
 }
 
+blockquote {
+    font-style: italic;
+    background: var(--background-secondary-light);
+    border-radius: 1em;
+    padding: 0.5rem 0.5rem;
+}
+
+blockquote p{
+    font-style: italic;
+}
+
+.info-table{
+    border: none;
+    background: none;
+    border-radius: none;
+    padding: none;
+}
+
+.info-table td {
+    border: none;
+    padding: none;
+}
+
+.info-table tr {
+    border: none;
+    padding: none;
+}
+
+table {
+    letter-spacing: 1px;
+    background: var(--background-secondary-light);
+}
+
+table, th, td {
+    border: 1px dotted var(--text-secondary-light);
+    border-collapse: collapse;
+    padding: 3px;
+}
+
+
 /* ---Fonts--- */
 
 @font-face { 
@@ -358,7 +398,19 @@ ol {
 
     a.clean-link:hover {
         background-color: var(--link-hover-dark);
-    }   
+    }
+    
+    blockquote {
+        background: var(--background-secondary-dark);
+    }
+
+    table {
+        background: var(--background-secondary-dark);
+    }
+
+    table, th, td {
+        border: 1px dotted var(--text-secondary-dark);
+    }
 }
 
 /* Language-specific syntax highlighting for code */

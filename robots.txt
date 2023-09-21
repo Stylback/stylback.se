@@ -99,6 +99,9 @@ Disallow: /
 #----------------
 # Well-behaved or "wanted" robots
 
+# None of the disallowed pages are "secret", 
+# I just don't want them indexed or show up in search results.
+
 # Bot for the Bing search engine
 User-agent: bingbot
 Disallow: /contact/
