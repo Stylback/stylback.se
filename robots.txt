@@ -1,8 +1,8 @@
 # robots.txt for www.stylback.se
-# an amalgam of other robots.txt across the web
+# an amalgam of other robots.txt found across the web
 #----------------
 # Unwanted or missbehaved robots
-# Might or might not respect robots.txt
+# Might or might not respect this document.
 
 # Bot for Bing Ads
 User-agent: adidxbot

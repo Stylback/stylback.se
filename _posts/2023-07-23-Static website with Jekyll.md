@@ -89,7 +89,7 @@ cd /docker/jekyll && sudo docker compose up -d
 
 If everything went well, Jekyll will now be running in a Docker container. It will have found our HTML-file, generated a static website from it and served it on port `4000`. Open your browser and visit `<localhost>:4000`, you should be met with:
 
-![White background, black letters spell out "Hello World!"](/assets/images/jekyll_hello_world.png)
+![White background, black letters spell out "Hello World!"](/assets/media/static-website/jekyll_hello_world.png)
 
 ### Modifying the template
 
@@ -116,7 +116,7 @@ Add `This is a test.` to `Hello World!`:
 
 Save and exit. Refresh the webpage and you should immediately see:
 
-![White background, black letters spell out "Hello World! This is a test."](/assets/images/jekyll_hello_world_test.png)
+![White background, black letters spell out "Hello World! This is a test."](/assets/media/static-website/jekyll_hello_world_test.png)
 
 For further modification I highly recommend that you follow Jekyll's [step-by-step guide](https://jekyllrb.com/docs/step-by-step/01-setup/) to get started. In addition to basic HTML/CSS, you will also be introduced to [Front Matter](https://jekyllrb.com/docs/front-matter/) and [Liquid templates](https://shopify.github.io/liquid/) which are powerful tools for streamlining deployment.
 
