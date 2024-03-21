@@ -1,7 +1,7 @@
 ---
 title: Static website with Jekyll
 categories: self-hosting
-updated: 2023-07-26
+updated: 2024-03-21
 ---
 
 [Jekyll](https://jekyllrb.com) is an open-source static site generator and server. It takes a collection of source files (HTML, CSS, Markdown) and builds a ready-to-serve static website.
@@ -12,12 +12,12 @@ In this post I will demonstrate how to generate and serve a simple static websit
 
 I will make the following assumptions:
 
-- You have access to a server
-- You have Docker installed and configured
-- You have Nginx Proxy Manager installed and configured
-- You own a domain
+- You have access to a server.
+- You have Docker installed and configured.
+- You have Nginx Proxy Manager installed and configured.
+- You own a domain.
 
-If you lack any of these and need help getting started, take a look at my own self-hosted server implementation on [GitHub](https://github.com/Stylback/home-server).
+If you lack any of these and need help getting started, take a look at my own self-hosted server project on [GitHub](https://github.com/Stylback/home-server).
 
 ### Initial setup
 
@@ -87,7 +87,7 @@ Save and exit. Bring the container and image up:
 cd /docker/jekyll && sudo docker compose up -d
 ```
 
-If everything went well, Jekyll will now be running in a Docker container. It will have found our HTML-file, generated a static website from it and served it on port `4000`. Open your browser and visit `<localhost>:4000`, you should be met with:
+If everything went well, Jekyll will now be running in a Docker container. It will have found our HTML-file, generated a static website from it and served it on port `4000`. Open your browser and visit `server-ip:4000`, you should be met with:
 
 ![White background, black letters spell out "Hello World!"](/assets/media/static-website/jekyll_hello_world.png)
 

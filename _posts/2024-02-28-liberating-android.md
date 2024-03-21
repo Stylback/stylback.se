@@ -214,8 +214,6 @@ An (almost) fully functioning Samsung Galaxy Ace 4, without battery, powered usi
 <video
     height="800"
     controls
-    autoplay
-    muted
     preload="auto">
     <source src="/assets/media/liberating-android/final_result.webm" type="video/webm" />
 </video>
