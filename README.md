@@ -177,26 +177,4 @@ If the signature is good, paste the contents into your file and upload the file 
 
 ## Copyright, license and usage
 
-Images, with the exception of the website favicon, is subject to **All Rights Reserved**.
-
-The text content of the Home page is subject to **All Rights Reserved**.
-
-The text contents of posts, which can be found listed on the Blog page, is subject to the [MIT license](https://mit-license.org/).
-
-The following external resources and assets are used in this website and are subject to their own license agreements:
-
-- The website body text font is [Montserrat](https://fonts.google.com/specimen/Montserrat/about), which is licensed under the [Open Font License](https://opensource.org/license/ofl-1-1/).
-- The website monospace font is [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono), which is licensed under the [Open Font License](https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt).
-- The website favicon is "align-left" from [Feathericons](https://feathericons.com/), which is licensed under the [MIT license](https://mit-license.org/).
-- The color scheme used for syntax highligthing in dark mode is [Zenburn](https://github.com/jnurmine/Zenburn), which is licensed under [GNU GPL](https://www.gnu.org/licenses/gpl-3.0.html).
-
-The source code of this website, excluding external resources and assets, is subject to the [MIT license](https://mit-license.org/).
-
-If you wish to use assets subject to **All Rights Reserved**, contact me with the following information:
-
-- Your name.
-- What assets you would like to use.
-- In what capacity you would like to use said assets.
-- If the usage capacity is commercial, what legal entity you represent.
-
-I will then get back to you on whether I grant you the right to use said assets or not.
+See [https://www.stylback.se/copyright/](https://www.stylback.se/copyright/).
