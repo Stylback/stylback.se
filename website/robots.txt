@@ -1,0 +1,63 @@
+# ----------------
+# robots.txt for www.stylback.se
+# An amalgam of other robots.txt found across the web
+# ----------------
+# SECTION 1. UNWANTED OR MISBEHAVING BOTS
+# Might or might not respect this document.
+
+User-agent: adidxbot                # Bot for Bing Ads
+User-agent: AdsBot-Google           # Bot for Google Ads
+User-agent: AdsBot-Google-Mobile    # Bot for Google Ads
+User-agent: Mediapartners-Google    # Bot for Google Ads
+User-agent: Storebot-Google         # Bot for Google Ads
+User-agent: Googlebot-Image         # Bot for Google images
+User-agent: GoogleOther             # Bot for other Google services
+User-agent: GPTBot                  # Crawler by OpenAI to train their LLMs
+User-agent: grapeshot               # Advertisment optimization bot by Oracle
+User-agent: DataForSeoBot           # SEO bot by DataForSEO
+User-agent: SEOkicks                # SEO bot by SEOkicks
+User-agent: AhrefsBot               # SEO bot by Ahrefs
+User-agent: SemrushBot              # Crawler for SEO by Semrush
+User-agent: serpstatbot             # Crawler by Serpstat
+User-agent: Cincraw                 # Website downloader by Cincraw
+User-agent: BrightEdge Crawler      # Crawler by BRIGHTEDGE
+User-agent: magpie-crawler          # Website downloader by Brandwatch
+User-agent: BLEXBot                 # Crawler by webmeup
+User-agent: dotbot                  # Crawler by Moz
+User-agent: WebCopier               # Website downloader
+User-agent: Offline Explorer        # Website downloader
+User-agent: Baiduspider             # Crawler by Baido
+User-agent: Yandex                  # Bot for the Yandex search engine
+Disallow: /
+
+# ----------------
+# SECTION 2: WELL-BEHAVED OR WANTED BOTS
+# Can crawl all but a few pages. None of the disallowed pages are secret, I just don't want them indexed.
+
+User-agent: bingbot                 # Bot for the Bing search engine
+User-agent: Googlebot               # Bot for Google search engine
+User-agent: DuckDuckBot             # Bot for the DuckDuckGo search egine
+User-agent: Slurp                   # Crawler for the Yahoo! search engine
+User-agent: PetalBot                # Crawler for the Petal search engine
+User-agent: MJ12bot                 # Bot for the Majestic search engine
+User-agent: Applebot                # Bot by Apple, for products such as Siri
+User-agent: Nutch                   # Open source bot
+User-agent: BUbiNG                  # Open source bot
+User-agent: Barkrowler              # BUbiNG derivative
+User-agent: ia_archiver             # Bot for the Internet Archive
+User-agent: SerendeputyBot          # Newsfeed getter by Serendeputy
+User-agent: startmebot              # RSS bot by startme
+User-agent: CCBot                   # Non-profit bot by Common Crawl
+Disallow: /contact/
+Disallow: /security/
+Disallow: /security.txt
+Disallow: /key.asc
+Disallow: /assets/media/profile.jpg
+crawl-delay: 10                     # Not universally supported
+
+# ----------------
+# SECTION 3: EVERYONE ELSE
+# Disallowed by default
+
+User-agent: *
+Disallow: /

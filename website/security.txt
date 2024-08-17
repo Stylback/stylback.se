@@ -1,0 +1,21 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Expires: 2025-09-01T00:00:00.000Z
+Canonical: https://www.stylback.se/security.txt
+Policy: https://www.stylback.se/security/
+Contact: https://www.stylback.se/contact/
+Encryption: https://www.stylback.se/key.asc
+Preferred-Languages: en, sv
+Acknowledgments: https://www.stylback.se/security/
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCgAdFiEE3DHYdolmmMEHjawomlWGU6WUwk8FAmbAnwEACgkQmlWGU6WU
+wk+oBQf/du+8Mi4Y92BFGWZGTnj8GkAp+y2PAp+3DxhhZTAPdAJbwpmeVORwZv+v
+tJCY74Xj3KHnZsFGV0NGHFSCIDN+VefHmJLJRAvb9L46dtqi1jqMhWlh7FnEM4Im
+jpWVXoQGfPcFF94bSMRBr0NQcrnD7Mfqv9w47IieaQa1h7CbJHt3LQAqjKoPzMzt
+wDKpnWj4GdxLAn+yKQ0EAdvW19SmEWacBhVpNFmQCiNuVn2ItBqtE4pJ13VdUqts
+fVKHoHAlZWOZUq6HKcJBpK/ptTXlSeWhVGVkzIZot8tdVY7q3O04gSIsyUDc6leT
+NRIqxmTFj4So48gfilWEY6wYxJyK5g==
+=HBHu
+-----END PGP SIGNATURE-----

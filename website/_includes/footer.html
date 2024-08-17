@@ -1,0 +1,11 @@
+<div class="footer-content">
+
+  <p>&#169; Jonas Stylbäck, 2024</p>
+
+  <div class="footer-items">
+    {% for item in site.data.foot %}
+      <a href="{{ item.link }}" {% if page.url == item.link %}{% endif %}>{{ item.name }}</a>
+    {% endfor %}
+  </div>
+  
+</div>

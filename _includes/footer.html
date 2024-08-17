@@ -1,7 +1,0 @@
-<nav>
-    <ul>
-      {% for item in site.data.footer %}
-        <a class="clean-link" href="{{ item.link }}" {% if page.url == item.link %}{% endif %}>{{ item.name }}</a>
-      {% endfor %}
-    </ul>
-</nav>

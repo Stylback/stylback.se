@@ -1,0 +1,491 @@
+---
+
+---
+/* ---COLORS--- */
+[data-theme="light"] {
+    --bg-main: #F1F1F1;
+    --fg-main: #434D56;
+    --bg-sec: #DDDDDD;
+    --fg-sec: #374857;
+    --link: #4E4EB5;
+    --link-hover: #D6D0D0;
+}
+
+[data-theme="dark"] {
+    --bg-main: #29292E;
+    --fg-main: #FFFFFF;
+    --bg-sec: #333344;
+    --fg-sec: #CECECE;
+    --link: #A2A2FF;
+    --link-hover: #524E4E;
+}
+/* -------------- */
+
+/* ---MAIN--- */
+
+body {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    height: 100%;
+    background-color: var(--bg-main);
+    color: var(--fg-main);
+}
+/* -------------- */
+
+/* ---MAIN CONTAINERS--- */
+/*
+Idea: Have the container fill the entire view and align
+content through the use of container items and their properties.
+
+Good reference: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+*/
+.container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    width: 100%;
+}
+
+.content {
+    width: 80%;
+    max-width: 800px;
+    min-height: 100vh;
+}
+
+.about-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* -------------- */
+
+/* ---HEADER--- */
+/*
+The header spans the full width with fixed height.
+the navigation bar is constrained to the center.
+*/
+header {
+    background-color: var(--bg-sec);
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    height: 48px;
+    justify-content: center;
+    position: sticky;
+    top:0;
+    z-index: 1;
+}
+
+nav {
+    display: flex;
+    width: 80%;
+    max-width: 800px;
+    justify-content: space-between;
+}
+
+/* ---HOME BUTTON--- */
+.home-button {
+    width: 144px;
+    background-color: transparent;
+    border-color: transparent;
+    border-width: 1px;
+}
+
+.home-button a {
+    text-decoration: none;
+    color: var(--fg-sec);
+    font-weight: normal;
+    font-size: 20px;
+    font-style: normal;
+    text-align: left;
+    border-radius: 2rem;
+    padding: 0.5rem;
+}
+
+.home-button a:hover {
+    background-color: var(--link-hover);
+}
+/* -------------- */
+
+/* ---LIGHT/DARK MODE TOGGLE--- */
+.theme-toggle {
+    border-width: 1px;
+    width: 48px;
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--fg-sec);
+    font-size: 32px;
+    border-radius: 1em;
+}
+
+.theme-toggle:hover {
+    background-color: var(--link-hover);
+    border-color: transparent;
+}
+
+/* ---DROP-DOWN MENU--- */
+.menu {
+    float: right;
+    
+}
+    
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+}
+    
+.menu li {
+    float: right;
+    position: relative;    
+}
+    
+.menu li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--fg-sec);
+    font-size: 22px;
+}
+    
+.menu li ul {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    min-width: 140px;
+}
+
+.menu li ul li a{
+    font-size: 20px;
+}
+    
+.menu li:hover ul {
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: right;
+    background-color: var(--bg-sec);
+}
+/* -------------- */
+
+/* ---BOTTOM NAVIGATION--- */
+.bottom-nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.back-button, .back-to-top {
+    color: var(--fg-sec);
+    background-color: transparent;
+    border-color: transparent;
+    padding: 1rem;
+    font-weight: normal;
+    font-size: 20px;
+    font-style: normal;
+    text-align: left;
+    border-radius: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.back-button:hover, .back-to-top:hover {
+    background-color: var(--link-hover);
+}
+/* -------------- */
+
+/* ---FOOTER--- */
+/* Footer should have a copyright notice,
+ a link to privacy, a link to security and a contacts page*/
+footer {
+    background-color: var(--bg-sec);
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    height: 96px;
+    justify-content: center;
+}
+
+.footer-content {
+    display: flex;
+    width: 80%;
+    max-width: 800px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-items {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.footer-items a{
+    display: flex;
+    color: var(--fg-sec);
+    font-weight: normal;
+    font-size: 16px;
+    font-style: normal;
+    border-radius: 2em;
+    padding: 0.5rem 0.5rem;
+}
+/* -------------- */
+
+/* ---BLOG--- */
+.blog-posts-list {
+    list-style: none;
+    font-size: 20px;
+    color: var(--fg-sec);
+}
+
+.blog-posts-list li{
+    padding: 0.5rem 0.5rem;
+    border-radius: 2em;
+}
+
+.blog-posts-list a{
+    color: var(--fg-sec);
+    padding: 0.5rem 0.5rem;
+    border-radius: 2em;
+}
+
+.post-meta {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+    align-items: center;
+}
+
+.post-meta ul{
+    font-size: 18px;
+}
+
+.profile_picture {
+    opacity: 0.9;
+    border-radius: 1rem;
+    max-width: 80%;
+    height: auto;
+    width: auto\9;
+    padding: 10px;
+}
+
+.profile_thumbnail {
+    opacity: 1;
+    border-radius: 2rem;
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+}
+
+.profile-link:hover {
+    background-color: transparent;
+}
+
+/* -------------- */
+
+/* ---Images--- */
+img {
+    opacity: 0.95;
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+}
+/* -------------- */
+
+/* ---TYPEFACE--- */
+h1 {
+    font-weight: 300;
+    font-size: 40px;
+    text-align: left;
+}
+  
+h2 {
+    font-weight: normal;
+    font-size: 30px;
+    font-style: normal;
+    text-align: left;
+}
+  
+h3 {
+    font-weight: normal;
+    font-size: 25px;
+    font-style: normal;
+    text-align: left;
+}
+
+h4 {
+    font-weight: normal;
+    font-size: 20px;
+    font-style: normal;
+    text-align: left;
+}
+
+p {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 16px;
+}
+
+b { 
+    font-weight: bold;
+    font-style: normal;
+}
+
+i { 
+    font-weight: normal;
+    font-style: italic;
+}
+
+em { 
+    font-weight: normal;
+    font-style: italic;
+}
+
+ul {
+    padding-left: 15px;
+}
+
+ol {
+    padding-left: 20px;
+}
+
+blockquote {
+    font-style: italic;
+    background: var(--bg-sec);
+    border-radius: 0.5em;
+    padding: 0.5rem 0.5rem;
+    margin: 0;
+}
+
+blockquote p{
+    font-style: italic;
+    margin: 0;
+}
+
+table {
+    letter-spacing: 1px;
+    background: var(--bg-sec);
+}
+
+table, th, td {
+    border: 1px dotted var(--fg-sec);
+    border-collapse: collapse;
+    padding: 3px;
+}
+
+a {
+    color: var(--link);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: var(--link-hover);
+}
+/* -------------- */
+
+/* ---CODE--- */
+pre {
+    margin: 0;
+    border-width: 3px;
+    border-radius: 1rem;
+    width: auto;
+    padding: 0.5rem 0.5rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+code {
+    font-family: "JetBrains Mono", monospace;
+}
+
+.rouge-table {
+    background-color: transparent;
+}
+
+.rouge-table td{
+    border-color: transparent;
+}
+
+.rouge-code pre, .lineno {
+    font-family: "JetBrains Mono", monospace;
+}
+
+.language-plaintext {
+    background-color: var(--bg-sec);
+}
+/* -------------- */
+
+/* ---Responsiveness--- */
+@media screen and (max-width: 900px) {
+    .about-div {   
+        flex-direction: column;
+    }
+    .content {   
+        width: 96%;
+    }
+
+    header nav, footer nav {   
+        width: 96%;
+    }
+
+    h1 {
+        font-size: 7vw;
+    }
+
+    h2 {
+        font-size: 6vw;
+    }
+
+    h3 {
+        font-size: 5vw;
+    }
+
+    h4 {
+        font-size: 4vw;
+    }
+}
+
+/* ---FONTS--- */
+@font-face { 
+    font-family: Montserrat; 
+    src: url("../fonts/Montserrat-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face { 
+    font-family: Montserrat; 
+    src: url("../fonts/Montserrat-SemiBold.otf") format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face { 
+    font-family: Montserrat; 
+    src: url("../fonts/Montserrat-Italic.otf") format("opentype");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Montserrat; 
+    src: url("../fonts/Montserrat-BoldItalic.otf") format("opentype");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face { 
+    font-family: Montserrat; 
+    src: url("../fonts/Montserrat-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face { 
+    font-family: "JetBrains Mono";
+    src: url("../fonts/JetBrainsMono-Light.ttf") format("truetype");
+}
+/* -------------- */
+

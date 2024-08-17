@@ -1,0 +1,34 @@
+<!doctype html>
+
+<html lang = "en-SE" data-theme="light">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/gruvbox-light.css" id="highlight-style">
+  </head>
+
+  <body>
+    <div class="container">
+
+    <header>
+      {% include top-nav.html %}
+    </header>
+
+    <div class="content">
+      {{ content }}
+      {% include bottom-nav.html %}
+    </div>
+
+    <footer>
+      {% include footer.html %}
+    </footer>
+  
+  </div>
+
+  <script src="/assets/js/scripts.js"></script>
+  
+  </body>
+</html>
