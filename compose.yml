@@ -11,3 +11,8 @@ services:
       - UMASK=002
       - TZ=Europe/Stockholm
     restart: unless-stopped
+
+networks:
+  default:
+    name: gravel
+    external: true

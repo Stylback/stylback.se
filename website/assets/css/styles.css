@@ -266,7 +266,6 @@ footer {
     border-radius: 1rem;
     max-width: 80%;
     height: auto;
-    width: auto\9;
     padding: 10px;
 }
 
@@ -275,7 +274,6 @@ footer {
     border-radius: 2rem;
     max-width: 100%;
     height: auto;
-    width: auto\9;
 }
 
 .profile-link:hover {
@@ -289,7 +287,6 @@ img {
     opacity: 0.95;
     max-width: 100%;
     height: auto;
-    width: auto\9;
 }
 /* -------------- */
 
