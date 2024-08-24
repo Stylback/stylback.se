@@ -3,7 +3,7 @@ Dockerfiles etc. for production instances.
 Run:
 
 ```bash
-sudo docker build -t jekyll-dev -f prod/Dockerfile .
+sudo docker build -t jekyll-prod -f prod/Dockerfile .
 ```
 
 From the project root directory context, run:
