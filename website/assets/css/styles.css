@@ -3,22 +3,23 @@
 ---
 
 /* ---COLORS--- */
+/* Color theme is GruvBox */
 [data-theme="light"] {
-    --bg-main: #F1F1F1;
-    --fg-main: #434D56;
-    --bg-sec: #DDDDDD;
-    --fg-sec: #374857;
-    --link: #4E4EB5;
-    --link-hover: #D6D0D0;
+    --bg-main: #F9F5D7;
+    --fg-main: #282828;
+    --bg-sec: #F2E5BC;
+    --fg-sec: #282828;
+    --link: #D79921;
+    --link-hover: #D5C4A1;
 }
 
 [data-theme="dark"] {
-    --bg-main: #29292E;
-    --fg-main: #FFFFFF;
-    --bg-sec: #333344;
-    --fg-sec: #CECECE;
-    --link: #A2A2FF;
-    --link-hover: #524E4E;
+    --bg-main: #32302F;
+    --fg-main: #FBF1C7;
+    --bg-sec: #1D2021;
+    --fg-sec: #FBF1C7;
+    --link: #D79921;
+    --link-hover: #504945;
 }
 /* -------------- */
 
@@ -251,15 +252,15 @@ footer {
     border-radius: 2em;
 }
 
-.post-meta {
+.byline {
     display: flex;
     flex-flow: row wrap;
     justify-content: left;
     align-items: center;
 }
 
-.post-meta ul{
-    font-size: 18px;
+.byline ul{
+    font-family: monospace;
 }
 
 .profile_picture {

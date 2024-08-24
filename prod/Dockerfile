@@ -17,7 +17,7 @@ RUN gem install jekyll
 RUN ruby -v && bundle -v && jekyll -v
 
 # Build
-COPY ./website /srv/jekyll
+ADD ./website /srv/jekyll
 WORKDIR /srv/jekyll
 RUN bundle exec jekyll build
 
@@ -27,7 +27,7 @@ RUN bundle exec jekyll build
 #   Ports are exposed and the web server is ready to serve the site
 
 FROM nginx:1-alpine-slim
-COPY nginx.conf /etc/nginx/nginx.conf
+ADD ./prod/nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /srv/jekyll/_site /usr/share/nginx/html
 
 EXPOSE 80

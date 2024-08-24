@@ -1,0 +1,16 @@
+services:
+  dev-jekyll:
+    container_name: jekyll-dev
+    image: jekyll-dev:latest
+    ports:
+    # - external:internal
+      - 4000:4000
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Europe/Stockholm
+    volumes:
+      - ../website:/srv/jekyll
+    command: bundle exec jekyll serve -H 0.0.0.0
+    restart: unless-stopped

@@ -1,7 +1,7 @@
 services:
-  prod-jekyll:
-    container_name: prod-jekyll
-    image: custom-jekyll:latest
+  jekyll-prod:
+    container_name: jekyll-prod
+    image: jekyll-prod:latest
     ports:
     # - external:internal
       - 3999:3999

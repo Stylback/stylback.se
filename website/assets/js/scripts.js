@@ -1,78 +1,59 @@
-/**
-* Utility function to calculate the current theme setting.
-* Look for a local storage value.
-* Fall back to system setting.
-* Fall back to light mode.
-* source: https://whitep4nth3r.com/blog/best-light-dark-mode-theme-toggle-javascript/
 
-function calculateSettingAsThemeString({ localStorageTheme, systemSettingDark }) {
-  if (localStorageTheme !== null) {
-    return localStorageTheme;
-  }
-
-  if (systemSettingDark.matches) {
-    return "dark";
-  }
-
-  return "light";
-}
-*/
-/**
-* Utility function to update the button text and aria-label.
-
-function updateButton({ buttonEl, isDark }) {
-  const newCta = isDark ? "\u263C" : "\u263D";
-  // use an aria-label if you are omitting text on the button
-  // and using a sun/moon icon, for example
-  buttonEl.setAttribute("aria-label", newCta);
-  buttonEl.innerText = newCta;
-}
+/** --------------------------------------- */
+/** DARKMODE/LIGHTMODE SWITCHER
+ * Logic:
+ *  1. Find out if dark mode is prefered by the visitor, set the initial theme according to this.
+ *  2. Ensure persistency of theme value through the use of localStorage.
+ *  3. Let the user switch theme by updating the theme value in localStorage.
+ * 
+ * In addition, the toggle-button symbol is switched alongside the theme.
+ * This is made possible by the use of the "data-theme" syntax in css, where we specify the color values.
 */
 
-/**
-* Utility function to update the theme setting on the html tag
-
-function updateThemeOnHtmlEl({ theme }) {
+function switchTheme({ theme }) {
   document.querySelector("html").setAttribute("data-theme", theme);
-  if (theme === "dark") {
+  if (theme === "light") {
+    document.getElementById("highlight-style").href="/assets/css/gruvbox-light.css";
+  } else {
     document.getElementById("highlight-style").href="/assets/css/gruvbox-dark.css";
-  } else document.getElementById("highlight-style").href="/assets/css/gruvbox-light.css";
+  }
 }
-*/
 
-/**
-* On page load:
-*/
+function updateButton({ buttonElement }) {
+  if (localStorage.getItem("theme") === "light" ) {
+    button.setAttribute("aria-label", "\u263C");
+    button.innerText = "\u263C";
+  } else {
+    button.setAttribute("aria-label", "\u263C");
+    button.innerText = "\u263D";
+  }
+}
 
-/**
-* 1. Grab what we need from the DOM and system settings on page load
+const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)"); /** boolean*/
+var theme;
+if (darkModePreference == true) {
+  theme = "dark"
+} else {
+  theme = "light"
+}
 
+if (localStorage.getItem("theme") == null) {
+  localStorage.setItem("theme", "dark");
+}
+
+switchTheme({ theme: localStorage.getItem("theme") });
 const button = document.querySelector("[data-theme-toggle]");
-const localStorageTheme = localStorage.getItem("theme");
-const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
-*/
-/**
-* 2. Work out the current site settings
-
-let currentThemeSetting = calculateSettingAsThemeString({ localStorageTheme, systemSettingDark });
-*/
-/**
-* 3. Update the theme setting and button text accoridng to current settings
-
-updateButton({ buttonEl: button, isDark: currentThemeSetting === "dark" });
-updateThemeOnHtmlEl({ theme: currentThemeSetting });
-*/
-/**
-* 4. Add an event listener to toggle the theme
+updateButton({buttonElement: button})
 
 button.addEventListener("click", (event) => {
-  const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
-
-  localStorage.setItem("theme", newTheme);
-  updateButton({ buttonEl: button, isDark: newTheme === "dark" });
-  updateThemeOnHtmlEl({ theme: newTheme });
-
-  currentThemeSetting = newTheme;
-
+  if (localStorage.getItem("theme") === "light" ) {
+    switchTheme({ theme: "dark" });
+    localStorage.setItem("theme", "dark");
+    updateButton({buttonElement: button})
+  } else {
+    switchTheme({ theme: "light" });
+    localStorage.setItem("theme", "light");
+    updateButton({buttonElement: button})
+  }
 });
-*/
+/** --------------------------------------- */
