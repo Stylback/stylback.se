@@ -24,7 +24,6 @@
 /* -------------- */
 
 /* ---MAIN--- */
-
 body {
     font-family: "Montserrat", sans-serif;
     margin: 0;
@@ -38,7 +37,6 @@ body {
 /*
 Idea: Have the container fill the entire view and align
 content through the use of container items and their properties.
-
 Good reference: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 */
 .container {
@@ -84,6 +82,7 @@ nav {
     max-width: 800px;
     justify-content: space-between;
 }
+/* -------------- */
 
 /* ---HOME BUTTON--- */
 .home-button {
@@ -111,31 +110,31 @@ nav {
 
 /* ---LIGHT/DARK MODE TOGGLE--- */
 .theme-toggle {
-    border-width: 1px;
+    border-width: 0px;
     width: 48px;
+    height: 48px;
     background-color: transparent;
     border-color: transparent;
     color: var(--fg-sec);
     font-size: 32px;
-    border-radius: 1em;
+    border-radius: 50%;
 }
 
 .theme-toggle:hover {
     background-color: var(--link-hover);
     border-color: transparent;
 }
+/* -------------- */
 
 /* ---DROP-DOWN MENU--- */
 .menu {
     float: right;
-    
 }
     
 .menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    
 }
     
 .menu li {
@@ -263,9 +262,27 @@ footer {
     font-family: monospace;
 }
 
+.profile-link:hover {
+    background-color: transparent;
+}
+/* -------------- */
+
+/* ---Media--- */
+img {
+    opacity: 0.95;
+    max-width: 100%;
+    height: auto;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+}
+
 .profile_picture {
     opacity: 0.9;
-    border-radius: 1rem;
+    border-radius: 50%;
     max-width: 80%;
     height: auto;
     padding: 10px;
@@ -273,20 +290,7 @@ footer {
 
 .profile_thumbnail {
     opacity: 1;
-    border-radius: 2rem;
-    max-width: 100%;
-    height: auto;
-}
-
-.profile-link:hover {
-    background-color: transparent;
-}
-
-/* -------------- */
-
-/* ---Images--- */
-img {
-    opacity: 0.95;
+    border-radius: 50%;
     max-width: 100%;
     height: auto;
 }
@@ -371,6 +375,10 @@ table, th, td {
     border: 1px dotted var(--fg-sec);
     border-collapse: collapse;
     padding: 3px;
+}
+
+td em {
+    font-size: 12px;
 }
 
 a {
@@ -487,4 +495,3 @@ code {
     src: url("../fonts/JetBrainsMono-Light.ttf") format("truetype");
 }
 /* -------------- */
-

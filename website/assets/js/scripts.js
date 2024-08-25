@@ -21,14 +21,16 @@ function switchTheme({ theme }) {
 
 function updateButton({ buttonElement }) {
   if (localStorage.getItem("theme") === "light" ) {
-    button.setAttribute("aria-label", "\u263C");
-    button.innerText = "\u263C";
+    button.setAttribute("aria-label", sun);
+    button.innerText = sun;
   } else {
-    button.setAttribute("aria-label", "\u263C");
-    button.innerText = "\u263D";
+    button.setAttribute("aria-label", moon);
+    button.innerText = moon;
   }
 }
 
+const sun = "\u263C"; /** White sun with rays */
+const moon = "\u263D"; /** First Quarter Moon */
 const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)"); /** boolean*/
 var theme;
 if (darkModePreference == true) {

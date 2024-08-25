@@ -13,7 +13,7 @@ The years had not been kind to it, there were multiple scratches on both case an
 | :---: | :---: |
 | *Front shot of the GBA, the ABS plastic is visibly yellowed and there are multiple scratches.* | *Original artic-white color of the GBA. Source: [Wikimedia](https://commons.wikimedia.org/wiki/File:Wikipedia_gameboyadvance.jpg). Copyright: Public Domain.* |
 
-The model number on the back (`AC19789877`) told me it was manufactured for the European market. Opening the battery lid, the silkscreen visible through a small slit (`02 8-1`) told me the motherboard was a 40-pin model (as supposed to 32-pin).
+The model number on the back (`AC19789877`) told me it was manufactured for the European market. Opening the battery lid, the silkscreen visible through a small slit (`02 8-1`) told me the motherboard was a 40-pin model (as opposed to 32-pin).
 
 | ![](/assets/media/gameboy-advance/motherboard_model.jpg) |
 | :---: |
