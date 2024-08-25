@@ -21,7 +21,7 @@ Next, run this `docker compose` to bring the instance up:
 docker compose -f dev/compose.yml up -d --build
 ```
 
-Now you can simply visit [`localhost:4000`](localhost:4000) in your browser to visit the development instance of the website. Any changes you make to the codebase can be quickly viewed by refreshing the webpage. If you rather the webpage refreshed by itself, you might want to take a look at the [`--livereload`](https://jekyllrb.com/docs/configuration/options/#build-command-options) Serve Command Option.
+Now you can simply visit [`localhost:4000`](http://localhost:4000/) in your browser to visit the development instance of the website. Any changes you make to the codebase can be quickly viewed by refreshing the webpage. If you rather the webpage refreshed by itself, you might want to take a look at the [`--livereload`](https://jekyllrb.com/docs/configuration/options/#build-command-options) Serve Command Option.
 
 ## How does the Dockerfile work?
 The `Dockerfile` is a set of instructions to the Docker Engine on how to build an **image**. Let us have a look at the `Dockerfile` for the development instance:
@@ -46,7 +46,7 @@ Finally, we change the working directory within the image to `/srv/jekyll` and e
 
 If you're interested and want to learn more, you can read about `Dockerfile` in the [official documentation](https://docs.docker.com/reference/dockerfile/).
 
-## How does the compose work?
+## How does the compose file work?
 Similarily to a `Dockerfile`, a `compose.yml` file is a set of instructions to the Docker Engine on how to build a **container**. Here, we specify what images should be included in the container and what options they should run with. Let us take a look at the `compose.yml` for the development instance:
 
 ```yml

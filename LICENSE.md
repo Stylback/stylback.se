@@ -1,5 +1,5 @@
 # License
-The contents of this repository, with some expections, are licensed under the **MIT license**.
+The contents of this repository, **with some exceptions**, are licensed under the **MIT license**.
 
 ## Exceptions to the MIT license
 - The `JetBrainsMono-Light.ttf` font file, which is created by JetBrains and licensed under the **Open Font License**.
