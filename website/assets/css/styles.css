@@ -222,7 +222,7 @@ footer {
     justify-content: space-around;
 }
 
-.footer-items a{
+.footer-items a, .license-link{
     display: flex;
     color: var(--fg-sec);
     font-weight: normal;
@@ -230,6 +230,10 @@ footer {
     font-style: normal;
     border-radius: 2em;
     padding: 0.5rem 0.5rem;
+}
+
+.license-link:hover {
+    background-color: var(--link-hover);
 }
 /* -------------- */
 
