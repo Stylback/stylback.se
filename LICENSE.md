@@ -4,7 +4,7 @@ The contents of this repository, **with some exceptions**, are licensed under th
 ## Exceptions to the MIT license
 - The `JetBrainsMono-Light.ttf` font file, which is created by JetBrains and licensed under the **Open Font License**.
 - The `Montserrat-*.otf` family of font files, which is created by Google and licensed under the **Open Font License**.
-- Media assets (images, videos) are subject to **All Rights Reserved** unless stated otherwise.
+- Media assets (images, videos etc.), which are subject to **All Rights Reserved** unless stated otherwise.
 
 # MIT License
 Copyright (c) 2024 Jonas Stylbäck

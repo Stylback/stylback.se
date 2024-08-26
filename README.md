@@ -1,28 +1,37 @@
-# Static webpage from scratch
+# www.stylback.se
+This repository houses my website, [www.stylback.se](https://www.stylback.se). It is a static website built from scratch using HTML/CSS/JavaScript and [Jekyll](https://jekyllrb.com/).
 
-A repository to house my website, [stylback.se](https://www.stylback.se). It's a static website built from scratch using HTML and CSS with Front Matter and Liquid Templates to streamline deployment.
+The development instance of the website utilizes a single-stage Dockerfile to build Jekyll and its dependencies for local development. The production instance on the other hand utilizes a two-stage Dockerfile to build the static files using Jekyll and serve them using the [nginx](https://nginx.org/en/) web server. The production instance of the website is exposed to the internet using [Nginx Proxy Manager](https://nginxproxymanager.com/) on my personal server (a project you can read more about [here](https://github.com/Stylback/home-server)).
 
-It is served using Jekyll, an open-source static website generator and server. Jekyll is running in a Docker container on a private server, a project you can read more about [here](https://github.com/Stylback/home-server).
+Without expanding on the source files located in the `website` directory, here is the overall directory structure:
 
-## Getting started with Jekyll
+```
+stylback-se
+├── dev
+│   ├── Dockerfile
+│   ├── README.md
+│   └── compose.yml
+├── prod
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── compose.yml
+│   └── nginx.conf
+├── website
+│   └── [source files, assets and more]
+├── LICENSE.md
+└── README.md
+```
 
-I've written a [step-by-step post](https://www.stylback.se/) on how to get started with Jekyll, assuming you want to host it yourself. I've also added a section on how to add hotlink protection and restrict visitor access to certain directories.
+## Building with Jekyll
+TODO
 
-## Further configuration
-
-Once you have your static website up and running with Jekyll you might want to do some further configurations, below are some suggestions.
-
-### robots.txt
-
+## robots.txt
 From [Wikipedia](https://en.wikipedia.org/wiki/Robots.txt):
-
 >robots.txt is the filename used for implementing the Robots Exclusion Protocol, a standard used by websites to indicate to visiting web crawlers and other web robots which portions of the website they are allowed to visit.
 >
 >This relies on voluntary compliance. Not all robots comply with the standard; email harvesters, spambots, malware and robots that scan for security vulnerabilities may even start with the portions of the website where they have been told to stay out.
 
-Even though some bots might not comply, larger ones such as `GoogleBot` will. As such I believe it's worth implementing.
-
-To get started, create a textfile named `robots.txt` in your websites **root** directory. That is, the directory that is at the highest level of your website, usually `/`. Inside the file you can specify what bots, if any, are allowed and where. The syntax is as follows:
+Even though some bots might not comply, larger ones such as `GoogleBot` will. As such I believe it's worth implementing. To get started, create a textfile named `robots.txt` in your websites **root** directory. That is, the directory that is at the highest level of your website, usually `/`. Inside the file you can specify what bots, if any, are allowed and where. The syntax is as follows:
 
 ```
 User-agent: {* OR a string}
@@ -54,21 +63,7 @@ If you want to send a signal to a search engine that you don't want a page to ap
 
 More on it [here](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag).
 
-### Refuse service
-
-It's possible to refuse serving content to a known bad actor. If you have their user-agent, you can add a Nginx rule to silently drop the connection:
-
-```
-if ($http_user_agent ~* (agent1|agent2|agent3)){
-    return 444;
-}
-```
-
-If any of the three user-agents try to connect they will be met with:
-`Secure connection could not be established.`.
-
-### Syntax highlighting
-
+## Syntax highlighting
 Ever looked at a website and seen a colorful block of code with syntax highlighting? Ever wondered how they do that?
 The answer is quite simple; it's just a stylesheet written in CSS, the hard part is implementing the language-specific CSS-classes.
 Once again our life have been made easier by Jekyll, there is both a number of stylesheets to choose from and built-in functionality to correctly implement the classes for us.
@@ -109,8 +104,7 @@ for item in list:
     print(item)
 ```
 
-### security.txt
-
+## security.txt
 A [security.txt](https://en.wikipedia.org/wiki/Security.txt) file is a text file that describes a how security researcher can make a responsible disclosure to you. The files is placed in the same location as `robots.txt`, usually the top-level directory.
 
 The [proposed standard](https://securitytxt.org/) consist of 9 fields (2 mandatory, 7 optional). I will implement 7 of them here.
@@ -174,29 +168,3 @@ gpg: Good signature from "Firstname lastname <name@domain.tld>" [ultimate]
 ```
 
 If the signature is good, paste the contents into your file and upload the file to your top-level directory.
-
-## Copyright, license and usage
-
-Images, with the exception of the website favicon, is subject to **All Rights Reserved**.
-
-The text content of the Home page is subject to **All Rights Reserved**.
-
-The text contents of posts, which can be found listed on the Blog page, is subject to the [MIT license](https://mit-license.org/).
-
-The following external resources and assets are used in this website and are subject to their own license agreements:
-
-- The website body text font is [Montserrat](https://fonts.google.com/specimen/Montserrat/about), which is licensed under the [Open Font License](https://opensource.org/license/ofl-1-1/).
-- The website monospace font is [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono), which is licensed under the [Open Font License](https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt).
-- The website favicon is "align-left" from [Feathericons](https://feathericons.com/), which is licensed under the [MIT license](https://mit-license.org/).
-- The color scheme used for syntax highligthing in dark mode is [Zenburn](https://github.com/jnurmine/Zenburn), which is licensed under [GNU GPL](https://www.gnu.org/licenses/gpl-3.0.html).
-
-The source code of this website, excluding external resources and assets, is subject to the [MIT license](https://mit-license.org/).
-
-If you wish to use assets subject to **All Rights Reserved**, contact me with the following information:
-
-- Your name.
-- What assets you would like to use.
-- In what capacity you would like to use said assets.
-- If the usage capacity is commercial, what legal entity you represent.
-
-I will then get back to you on whether I grant you the right to use said assets or not.

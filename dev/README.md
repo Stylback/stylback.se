@@ -6,7 +6,7 @@ This directory contains files to run a development instance of the website, enab
 - [Docker CLI](https://docs.docker.com/reference/cli/docker/), which usually comes bundled with a typical Docker installation
 
 ## Why a development instance?
-Development and production instances have different use cases, as well as different pros and cons. In a development instance, we can quickly see the impact of changes to the codebase without having to push them to a server. On the other hand, a production instance is both lighter and more secure to serve to strangers on the internet. While it's perfectly possible to use the development instance in production, it's a good experience to learn how to seperate them.
+Development and production instances have different use cases, as well as different pros and cons. In a development instance, we can quickly see the impact of changes to the codebase without having to push them to a server. On the other hand, a production instance is both lighter and more secure to serve to strangers on the internet. While it's perfectly possible (albeit not recommended) to use the development instance in production, it's a good learning experience to seperate them.
 
 ## How do I bring the development instance up?
 Open a terminal in the project root directory and run this `docker build` command to build the image:
@@ -44,7 +44,7 @@ Next, we install the prerequisite packages needed in order to get [Jekyll](https
 
 Finally, we change the working directory within the image to `/srv/jekyll` and expose port 4000 of the image. We can now use Docker CLI or Docker Compose to attach our website files to the image and access the Jekyll web server through the exposed port.
 
-If you're interested and want to learn more, you can read about `Dockerfile` in the [official documentation](https://docs.docker.com/reference/dockerfile/).
+If you're interested and want to learn more about the intricacies of `Dockerfile`, check out the [official documentation](https://docs.docker.com/reference/dockerfile/).
 
 ## How does the compose file work?
 Similarily to a `Dockerfile`, a `compose.yml` file is a set of instructions to the Docker Engine on how to build a **container**. Here, we specify what images should be included in the container and what options they should run with. Let us take a look at the `compose.yml` for the development instance:
