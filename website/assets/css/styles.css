@@ -110,14 +110,14 @@ nav {
 
 /* ---LIGHT/DARK MODE TOGGLE--- */
 .theme-toggle {
-    border-width: 0px;
     width: 48px;
     height: 48px;
     background-color: transparent;
-    border-color: transparent;
-    color: var(--fg-sec);
-    font-size: 32px;
+    border: none;
     border-radius: 50%;
+    font-size: 32px;
+    font-family: monospace;
+    color: var(--fg-sec);
 }
 
 .theme-toggle:hover {
@@ -385,6 +385,11 @@ td em {
     font-size: 12px;
 }
 
+.table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
 a {
     color: var(--link);
     background-color: transparent;
@@ -433,8 +438,17 @@ code {
     .about-div {   
         flex-direction: column;
     }
+    
     .content {   
         width: 96%;
+    }
+
+    table {
+        table-layout: fixed;
+        width: 100%;
+        letter-spacing: normal;
+        font-size: smaller;
+        word-wrap: break-word;
     }
 
     header nav, footer nav {   

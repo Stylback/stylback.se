@@ -9,7 +9,7 @@
     
     <div class="menu">
         <ul>
-            <li><a href="#" >&#9776</a>
+            <li><a href="" onclick="return false;" >&#9776</a>
                 <ul>
                 {% for item in site.data.menu %}
                 <li><a href="{{ item.link }}" {% if page.url == item.link %}{% endif %}>{{ item.name }}</a></li>
