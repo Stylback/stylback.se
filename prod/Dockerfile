@@ -29,5 +29,3 @@ RUN bundle exec jekyll build
 FROM nginx:1-alpine-slim
 ADD ./prod/nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /srv/jekyll/_site /usr/share/nginx/html
-
-EXPOSE 80

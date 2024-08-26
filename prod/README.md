@@ -1,4 +1,4 @@
-# Development
+# Production
 This directory contains files to run a production instance of the website, enabling a lightweight and (relatively) secure way to serve the website.
 
 ## Prerequisites
@@ -68,13 +68,11 @@ RUN bundle exec jekyll build
 FROM nginx:1-alpine-slim
 ADD ./prod/nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /srv/jekyll/_site /usr/share/nginx/html
-
-EXPOSE 80
 ```
 
 In stage one we start with [`alpine`](https://hub.docker.com/_/alpine/) as the foundation to build upon, we use `AS` to alias this image for later reference. Next, we install the prerequisite packages needed in order to get [Jekyll](https://jekyllrb.com/) up and running. In our case, this means `ruby`, `ruby-dev`, `gcc`, `g++`, `make`, `gcompat` and `libc-dev`. Next, we use the Ruby CLI to install [Bundler](https://bundler.io/) and Jekyll. As a sanity check we issue a `-v` command to `ruby`, `bundle` and `jekyll` to ensure that they were installed correctly. We attach the website files present in the `website` directory of this repository to the image. We make a call to the Jekyll CLI to build the static website files from the source files present in `website`.
 
-In the second stage we start with a fresh image, this time a bare-minimum Alpine image with the [nginx](https://nginx.org/en/) web server pre-installed. We attach the `nginx.conf` configuration file to the image in the canonical destination of such files (`/etc/nginx/nginx.conf`), we then copy the static website files over from the previous image to the new image. Finally we expose port 80 of the image so as to access the web server within.
+In the second stage we start with a fresh image, this time a bare-minimum Alpine image with the [nginx](https://nginx.org/en/) web server pre-installed. We attach the `nginx.conf` configuration file to the image in the canonical destination of such files (`/etc/nginx/nginx.conf`), we then copy the static website files over from the previous image to the new image.
 
 Using this two-stage build, the resulting image contains the bare minimum we need to serve our website; the static website files themselves and a web server to serve them. The first image along with its artifacts are discarded at the end of the build (with the exception of the files we copied over), as such they are not present in any form in the second image.
 
@@ -103,7 +101,7 @@ networks:
     external: true
 ```
 
-Intialize the file with the `services` keyword, then we specify the name of our service (`jekyll-prod`, in our case). Next, we specify the container name for the service for us to reference later (in our case, also `jekyll-prod`). We specify which image should be included in the container, which happens to be the production instance image we built using the `Dockerfile` previously. We specify `external:internal` port numbers to bind in the container, which here is the same (you might think that we should bind the internal port 80 to the external port 3999, but the web server listens on port 3999 per the `ngingx.conf` file)
+Intialize the file with the `services` keyword, then we specify the name of our service (`jekyll-prod`, in our case). Next, we specify the container name for the service for us to reference later (in our case, also `jekyll-prod`). We specify which image should be included in the container, which happens to be the production instance image we built using the `Dockerfile` previously. We specify `external:internal` port numbers to bind in the container, which here is the same.
 
 To continue, we use the `environment` keyword to specify what environment variables the container should run with. Here, we have set the `PUID`, `PGID`, `UMASK` variables to the default user per convention. The timezone variable `TZ` is strictly not necessary, but helps with consistency when dealing with logs. We allow the container to keep restaring in case of a failure unless we specifically stop it. Finally, we specify a Docker network for the container. We use `external: true` to indicate that the network already exists and does not need to be created.
 
