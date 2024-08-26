@@ -11,6 +11,9 @@ stylback-se
 │   ├── Dockerfile
 │   ├── README.md
 │   └── compose.yml
+├── media
+│   ├── [images, videos]
+│   └── README.md
 ├── prod
 │   ├── Dockerfile
 │   ├── README.md
@@ -22,48 +25,9 @@ stylback-se
 └── README.md
 ```
 
-## Building with Jekyll
-TODO
+# NOTE: WORK IN PROGRESS BELOW
 
-## robots.txt
-From [Wikipedia](https://en.wikipedia.org/wiki/Robots.txt):
->robots.txt is the filename used for implementing the Robots Exclusion Protocol, a standard used by websites to indicate to visiting web crawlers and other web robots which portions of the website they are allowed to visit.
->
->This relies on voluntary compliance. Not all robots comply with the standard; email harvesters, spambots, malware and robots that scan for security vulnerabilities may even start with the portions of the website where they have been told to stay out.
-
-Even though some bots might not comply, larger ones such as `GoogleBot` will. As such I believe it's worth implementing. To get started, create a textfile named `robots.txt` in your websites **root** directory. That is, the directory that is at the highest level of your website, usually `/`. Inside the file you can specify what bots, if any, are allowed and where. The syntax is as follows:
-
-```
-User-agent: {* OR a string}
-{Allow OR Disallow}: {empty OR a directory path}
-```
-
-For example, if you want to disallow `GoogleBot` from accessing your contacts page you might do something like this:
-
-```
-User-agent: GoogleBot
-Disallow: /contact/
-```
-
-If you want to disallow all bots everywhere you can use:
-
-```
-User-agent: *
-Disallow: /
-```
-
-For further syntax, see [this](https://developers.google.com/search/docs/crawling-indexing/robots/create-robots-txt) Google Developers article. A list of common user-agents can be found [here](https://user-agents.net/bots). You can also inspect other websites `robots.txt` for inspiration, such as [Wikipedia's](https://en.wikipedia.org/robots.txt).
-
-Note that while `robots.txt` can prevent bots from indexing the content of a page, **it does not prevent it from appearing in search results**.
-If you want to send a signal to a search engine that you don't want a page to appear in search results, use the `robots` HTML meta-tag on your pages:
-
-```html
-<meta name="robots" content="noindex">
-```
-
-More on it [here](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag).
-
-## Syntax highlighting
+## Working with Jekyll
 Ever looked at a website and seen a colorful block of code with syntax highlighting? Ever wondered how they do that?
 The answer is quite simple; it's just a stylesheet written in CSS, the hard part is implementing the language-specific CSS-classes.
 Once again our life have been made easier by Jekyll, there is both a number of stylesheets to choose from and built-in functionality to correctly implement the classes for us.
@@ -104,7 +68,85 @@ for item in list:
     print(item)
 ```
 
-## security.txt
+## Speeding up delivery: media transcoding
+
+```bash
+touch reduce.sh
+```
+
+```bash
+nano reduce.sh
+```
+
+```bash
+#! /bin/bash
+
+# Call this script with the path to the media directory to be transcoded and the output path.
+# The paths can be absolute or relative, they must exist, but they must NOT be encased in double quotes like a string nor end with a trailing backslash.
+# EXAMPLE: ./reduce.sh ~/Pictures/newpost ~/Pictures/newpost_transcoded
+
+MEDIA_PATH=$1
+OUTPUT_PATH=$2
+
+# .jpg
+shopt -s nullglob ;for f in $MEDIA_PATH/*.jpg $MEDIA_PATH/*.JPG $MEDIA_PATH/*.jpeg ; do convert "$f" -resize 777600@\> -set filename:f "%t" "%[filename:f].jpg"; done
+
+# .png
+shopt -s nullglob ;for f in $MEDIA_PATH/*.png ; do convert "$f" -resize 777600@\> -set filename:f "%t" "%[filename:f].png"; done
+
+# mp4
+# for file with .mp4, call handbrake CLI and convert to webm
+```
+
+```bash
+chmod +x reduce.sh
+```
+
+```bash
+./reduce.sh --PATH="~/Pictures/newpost"
+```
+
+## The wallflower of the internet: robots.txt
+From [Wikipedia](https://en.wikipedia.org/wiki/Robots.txt):
+>robots.txt is the filename used for implementing the Robots Exclusion Protocol, a standard used by websites to indicate to visiting web crawlers and other web robots which portions of the website they are allowed to visit.
+>
+>This relies on voluntary compliance. Not all robots comply with the standard; email harvesters, spambots, malware and robots that scan for security vulnerabilities may even start with the portions of the website where they have been told to stay out.
+
+Even though some bots might not comply, larger ones such as `GoogleBot` will. As such I believe it's worth implementing. To get started, create a textfile named `robots.txt` in your websites **root** directory. That is, the directory that is at the highest level of your website, usually `/`. Inside the file you can specify what bots, if any, are allowed and where. The syntax is as follows:
+
+```
+User-agent: {* OR a string}
+{Allow OR Disallow}: {empty OR a directory path}
+```
+
+For example, if you want to disallow `GoogleBot` from accessing your contacts page you might do something like this:
+
+```
+User-agent: GoogleBot
+Disallow: /contact/
+```
+
+If you want to disallow all bots everywhere you can use:
+
+```
+User-agent: *
+Disallow: /
+```
+
+For further syntax, see [this](https://developers.google.com/search/docs/crawling-indexing/robots/create-robots-txt) Google Developers article. A list of common user-agents can be found [here](https://user-agents.net/bots). You can also inspect other websites `robots.txt` for inspiration, such as [Wikipedia's](https://en.wikipedia.org/robots.txt).
+
+Note that while `robots.txt` can prevent bots from indexing the content of a page, **it does not prevent it from appearing in search results**.
+If you want to send a signal to a search engine that you don't want a page to appear in search results, use the `robots` HTML meta-tag on your pages:
+
+```html
+<meta name="robots" content="noindex">
+```
+
+More on it [here](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag).
+
+## Security: thoughts, mitigations and transparency
+
+### security.txt
 A [security.txt](https://en.wikipedia.org/wiki/Security.txt) file is a text file that describes a how security researcher can make a responsible disclosure to you. The files is placed in the same location as `robots.txt`, usually the top-level directory.
 
 The [proposed standard](https://securitytxt.org/) consist of 9 fields (2 mandatory, 7 optional). I will implement 7 of them here.
@@ -168,3 +210,5 @@ gpg: Good signature from "Firstname lastname <name@domain.tld>" [ultimate]
 ```
 
 If the signature is good, paste the contents into your file and upload the file to your top-level directory.
+
+## Tips and Tricks
