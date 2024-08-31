@@ -12,6 +12,7 @@ User-agent: Mediapartners-Google    # Bot for Google Ads
 User-agent: Storebot-Google         # Bot for Google Ads
 User-agent: Googlebot-Image         # Bot for Google images
 User-agent: GoogleOther             # Bot for other Google services
+User-agent: Google-Extended         # Google Bard/Gemini LLM
 User-agent: GPTBot                  # Crawler by OpenAI to train their LLMs
 User-agent: grapeshot               # Advertisment optimization bot by Oracle
 User-agent: DataForSeoBot           # SEO bot by DataForSEO

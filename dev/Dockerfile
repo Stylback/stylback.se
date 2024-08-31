@@ -15,4 +15,4 @@ RUN ruby -v && bundle -v && jekyll -v
 # Build
 WORKDIR /srv/jekyll
 
-EXPOSE 4000
+#EXPOSE 4000

@@ -8,17 +8,18 @@ Without expanding on the source files located in the `website` directory, here i
 ```
 stylback-se
 ├── dev
+│   ├── compose.yml
 │   ├── Dockerfile
 │   ├── README.md
-│   └── compose.yml
+│   └── reduce.sh
 ├── media
 │   ├── [images, videos]
 │   └── README.md
 ├── prod
-│   ├── Dockerfile
-│   ├── README.md
 │   ├── compose.yml
-│   └── nginx.conf
+│   ├── Dockerfile
+│   ├── nginx.conf
+│   └── README.md
 ├── website
 │   └── [source files, assets and more]
 ├── LICENSE.md
@@ -66,44 +67,6 @@ list = ['hello', 'there']
 # run a loop for each item of the list
 for item in list:
     print(item)
-```
-
-## Speeding up delivery: media transcoding
-
-```bash
-touch reduce.sh
-```
-
-```bash
-nano reduce.sh
-```
-
-```bash
-#! /bin/bash
-
-# Call this script with the path to the media directory to be transcoded and the output path.
-# The paths can be absolute or relative, they must exist, but they must NOT be encased in double quotes like a string nor end with a trailing backslash.
-# EXAMPLE: ./reduce.sh ~/Pictures/newpost ~/Pictures/newpost_transcoded
-
-MEDIA_PATH=$1
-OUTPUT_PATH=$2
-
-# .jpg
-shopt -s nullglob ;for f in $MEDIA_PATH/*.jpg $MEDIA_PATH/*.JPG $MEDIA_PATH/*.jpeg ; do convert "$f" -resize 777600@\> -set filename:f "%t" "%[filename:f].jpg"; done
-
-# .png
-shopt -s nullglob ;for f in $MEDIA_PATH/*.png ; do convert "$f" -resize 777600@\> -set filename:f "%t" "%[filename:f].png"; done
-
-# mp4
-# for file with .mp4, call handbrake CLI and convert to webm
-```
-
-```bash
-chmod +x reduce.sh
-```
-
-```bash
-./reduce.sh --PATH="~/Pictures/newpost"
 ```
 
 ## The wallflower of the internet: robots.txt

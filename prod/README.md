@@ -46,7 +46,7 @@ HSTS Subdomains:        Yes
 
 I can reference `jekyll-prod` in the `Forward Hostname / IP` field becuase they share the same Docker network. The `Scheme` is `http` becuase that's what's used between `jekyll-prod` and Nginx Proxy Manager, connections outside this context uses `https`.
 
-## How does the Dockerfile work?
+## How does the `Dockerfile` work?
 The `Dockerfile` is a set of instructions to the Docker Engine on how to build an **image**. As opposed to the development instance, the production instance uses a so-called "two-stage build architecture". In the first stage we build the static website files using Jekyll, in the second stage we construct a fresh image and transfer the website files over to it. This second stage contains a dedicated web server which will serve the static files on the designated port. This is considered best practice as the tools and assets necessary to **build** the website is present in the image that **serves** the website.
 
 Let us have a closer look at the `Dockerfile` for the production instance:
@@ -76,9 +76,9 @@ In the second stage we start with a fresh image, this time a bare-minimum Alpine
 
 Using this two-stage build, the resulting image contains the bare minimum we need to serve our website; the static website files themselves and a web server to serve them. The first image along with its artifacts are discarded at the end of the build (with the exception of the files we copied over), as such they are not present in any form in the second image.
 
-If you're interested and want to learn more about the intricacies of `Dockerfile`, check out the [official documentation](https://docs.docker.com/reference/dockerfile/).
+> If you're interested and want to learn more about the intricacies of `Dockerfile`, check out the [official documentation](https://docs.docker.com/reference/dockerfile/).
 
-## How does the compose file work?
+## How does the `compose.yml` file work?
 Similarily to a `Dockerfile`, a `compose.yml` file is a set of instructions to the Docker Engine on how to build a **container**. Here, we specify what images should be included in the container and what options they should run with. Let us take a look at the `compose.yml` for the production instance:
 
 ```yml
@@ -105,9 +105,9 @@ Intialize the file with the `services` keyword, then we specify the name of our 
 
 To continue, we use the `environment` keyword to specify what environment variables the container should run with. Here, we have set the `PUID`, `PGID`, `UMASK` variables to the default user per convention. The timezone variable `TZ` is strictly not necessary, but helps with consistency when dealing with logs. We allow the container to keep restaring in case of a failure unless we specifically stop it. Finally, we specify a Docker network for the container. We use `external: true` to indicate that the network already exists and does not need to be created.
 
-If you're interested and want to learn more about Docker compose, you can read about `compose.yml` in the [official documentation](https://docs.docker.com/compose/).
+> If you're interested and want to learn more about Docker compose, you can read about `compose.yml` in the [official documentation](https://docs.docker.com/compose/).
 
-# How does the nginx.conf file work?
+# How does the `nginx.conf` file work?
 `nginx.conf` is a [configuration file](https://nginx.org/en/docs/beginners_guide.html#conf_structure) for the nginx web server. Let us take a look at the `nginx.conf` for the production instance of the website:
 
 ```conf
@@ -140,4 +140,4 @@ Within the `server{}` block we have specified that:
 - the page to serve in case of 404 error (page not found) is `404.html` (located at `/usr/share/nginx/html/404.html`)
 - the web server should not append the port number (`3999`) when handling redirects
 
-We have also included a `location{}` block for the website root directory (`/`). `autoindex off` disables directory listing (aka "filebrowsing"), `try_files $uri.html $uri $uri/ =404` allows redirects to the real page when a slash is missed in the url (for example, `www.stylback.se/about` redirects to the correct URL `www.stylback.se/about/`). If no destination matched the allowed formats inluded in the argument, a 404 error is returned.
+We have also included a `location{}` block for the website root directory (`/`). `autoindex off` disables directory listing (aka "filebrowsing"), `try_files $uri.html $uri $uri/ =404` allows redirects to the real page when a slash is missed in the url (for example, `www.stylback.se/about` redirects to the correct URL `www.stylback.se/about/`). If no destination matched the allowed formats included in the argument, a 404 error is returned.

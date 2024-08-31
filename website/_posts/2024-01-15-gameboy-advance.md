@@ -29,7 +29,6 @@ Before I could test whether the console was still operational I had to clean the
 With the terminal out, the compartment could be cleaned with relative ease. As the residuals came from alkaline batteries (basic on the pH scale), it was best removed with a mild acid. I opted for food-grade citric acid (E330) diluted in warm water, I then dipped a soft toothbrush in the solution and scrubbed both the battery terminal and the internals of the compartement. Care had to be taken not to let the solution drip through to the motherboard, potentially damaging it. The reaction between the residual and the solution produced fizzling foam, when the reaction had stopped I dried the compartement with a cloth and left to dry. An hour later, fresh batteries were inserted, the console turned on and I was greeted with the nostalgic Game Boy logo and chime.
 
 <video
-    width="100%"
     controls
     preload="auto">
     <source src="/assets/media/gameboy-advance/gameboy_chime.webm" type="video/webm" />
@@ -185,7 +184,6 @@ With the promise of 9 to 10 hours of battery life, you could imagine my surprise
 The standard setup was to go back to basic: old screen, original cartridge, no capacitor kit, sound wheel at lowest. The console would run the main menu loop of *Harry Potter and the Philosopher's Stone* until it turned itself off. This loop have many moving sprites such as rolling clouds and lightning bolts, hopefully keeping the CPU busy. Do note that the measurements are a form of idealization, current draw will be slightly higher during real usage due to player input (i.e. pressing buttons).
 
 <video
-    width="80%"
     controls
     loop
     preload="auto">
@@ -223,7 +221,6 @@ After more than two months of research, tinkering and package-waiting, I managed
 But just as nothing is perfect, neither is this. As I removed the capacitor kit the audio hiss is back in the headphone jack, prompting me to simply play on low volume without headphones. The new shell does not have the same premium feel as the original, but it's free from scratches and yellowing. Enjoying a modern gaming experience comes at the cost of battery life and I always keep a spare pair in the carrying case, getting 5 hours of game time pretty consistently before having to swap for a fresh pair.
 
 <video
-    width="100%"
     controls
     preload="auto">
     <source src="/assets/media/gameboy-advance/final_result.webm" type="video/webm" />

@@ -3,7 +3,7 @@
 # This is good for security, as only the bare minimum of resources are exposed to the internet.
 
 # STAGE 1:
-#   Apline is used as the base image due to its small footprint
+#   Alpine is used as the base image due to its small footprint
 #   Ruby and dependencies are installed along with Jekyll
 #   The static website is built and the resulting files are located in /srv/jekyll/_site/
 
