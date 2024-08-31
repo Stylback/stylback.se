@@ -75,7 +75,7 @@ Next, we attach the website files found in the `website` directory of this repos
 > If you're interested and want to learn more, you can read about `compose.yml` in the [official documentation](https://docs.docker.com/compose/).
 
 ## How does the `reduce.sh` file work?
-`reduce.sh` is a home-cooked bash script to reduce the file size for media files, in order to speed up delivery of website contents to the visitor. `.jpg`, `.jpeg` and `.png` images have their metadata stripped and their resolution contained to a roughly ~1080x720px area with the help of [ImageMagick](https://imagemagick.org/index.php). `.mp4` video files are transcoded to VP9/Vorbis and placed in a `.webm` container using [HandBrake](https://handbrake.fr/). This reduces file sizes by around 70% with a negligible reduction in quality. 
+`reduce.sh` is a home-cooked bash script to reduce the file size for media files, in order to speed up delivery of website contents to the visitor. `.jpg`, `.jpeg` and `.png` images have their metadata stripped and their resolution contained to a roughly ~1080x720px area with the help of [ImageMagick](https://imagemagick.org/index.php). `.mp4` video files are transcoded to VP9/Opus and placed in a `.webm` container using [HandBrake](https://handbrake.fr/). This reduces file sizes by around 70% with a negligible reduction in quality. 
 
 Let us have a look at the contents of the script:
 
@@ -100,7 +100,7 @@ else
   fi
   
   for FILE in $INPUT_PATH/*; do
-    FILE="$FILE" 		        # In case of white characters in the filename
+    FILE="$FILE" 		        # In case of whitespace characters in the filename
     BASENAME="${FILE##*/}" 	# Filename without extension
 
     if [[ ( $FILE == *.PNG ) || ( $FILE == *.png ) ]]; then
@@ -112,7 +112,7 @@ else
       echo "Saved ${FILE##*/} to $OUTPUT_PATH/${BASENAME%.*}.jpg"
 	
     elif [[ $FILE == *.mp4 ]]; then
-      HandBrakeCLI -e VP9 -E vorbis -f av_webm -i --two-pass $FILE -o $OUTPUT_PATH/"${BASENAME%.*}.webm"
+      HandBrakeCLI -e VP9 -E opus -f av_webm -i --two-pass $FILE -o $OUTPUT_PATH/"${BASENAME%.*}.webm"
       echo "Saved ${FILE##*/} to $OUTPUT_PATH/${BASENAME%.*}.webm"
 	
     else
@@ -122,7 +122,16 @@ else
 fi
 ```
 
+The overall logic is as thus:
+1. Check that the source directory (`$INPUT_PATH`) is provided and exists.
+2. Check if the destination directory (`$OUTPUT_PATH`) exists and create it if it doesn't.
+3. For each file in the source directory, check if the file extension matches any of the pre-defined options and "reduce" them if they do.
 
+We use parameter expansion to reference the file in different capacities; with full path (`/home/user/Pictures/foo.jpg`), without path (`foo.jpg`) or basename only (`foo`). We always encapsulate paths and filenames with double quotes (`""`) in case are [whitespace characters](https://en.wikipedia.org/wiki/Whitespace_character) in them.
+
+Images are reduced by using the `convert` command from ImageMagick. Image resolution will be re-scaled to a 777600 pixel area (1080x720), the exact dimensions of which will depend on the aspect ratio of the image. We use the `-strip` option to remove metadata and `-auto-orient` to maintain rotation after the fact.
+
+Videos are reduced by using the `HandBrakeCLI` command. The [`.webm`](https://en.wikipedia.org/wiki/WebM) is designed to be used as a container for HTML video and is perfect for our usecase. With the exception of `AV1` (hardware acceleration support for `AV1` is still lacking), `VP9/Opus` exhibits the most efficient compression supported by the `.webm` container. We specify the `--two-pass` option to increase the video quality at no extra storage cost.
 
 > If you're interested and want to learn more, have a look at the official documentation for [ImageMagick](https://www.imagemagick.org/script/convert.php), [HandbrakeCLI](https://handbrake.fr/docs/en/latest/cli/command-line-reference.html) and [Parameter Expansion](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html).
 
@@ -134,4 +143,4 @@ fi
   <img src="/media/bee_reduced.jpg" width="45%" /> 
 </p>
 
-The left one is the original image (1.7 MB), the right one is the reduced image (171.3 kB).
+The left one is the original image (1.7 MB), the right one is the reduced image (171.3 kB). **Can you spot the difference?**

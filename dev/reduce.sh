@@ -3,7 +3,7 @@
 # AUTHOR: JONAS STYLBÄCK
 # Call this script to reduce file size for media in the $INPUT_PATH, which are then saved to $OUTPUT_PATH.
 # The script will reduce image resolution to roughly ~1080×720px using ImageMagick and
-# transcode .mp4 video files to VP9/Vorbis in a .webm container (saving roughly 70% storage) using HandBrakeCLI.
+# transcode .mp4 video files to VP9/Opus in a .webm container (saving roughly 70% storage) using HandBrakeCLI.
 # It will also strip image files of metadata (not necessary for video).
 
 # NOTE: The script MUST be called with two path arguments.
@@ -35,7 +35,7 @@ else
   fi
   
   for FILE in $INPUT_PATH/*; do
-    FILE="$FILE" 		        # In case of white characters in the filename
+    FILE="$FILE" 		        # In case of whitespace characters in the filename
     BASENAME="${FILE##*/}" 	# Filename without extension
 
     if [[ ( $FILE == *.PNG ) || ( $FILE == *.png ) ]]; then
@@ -47,7 +47,7 @@ else
       echo "Saved ${FILE##*/} to $OUTPUT_PATH/${BASENAME%.*}.jpg"
 	
     elif [[ $FILE == *.mp4 ]]; then
-      HandBrakeCLI -e VP9 -E vorbis -f av_webm -i --two-pass $FILE -o $OUTPUT_PATH/"${BASENAME%.*}.webm"
+      HandBrakeCLI -e VP9 -E opus -f av_webm -i --two-pass $FILE -o $OUTPUT_PATH/"${BASENAME%.*}.webm"
       echo "Saved ${FILE##*/} to $OUTPUT_PATH/${BASENAME%.*}.webm"
 	
     else

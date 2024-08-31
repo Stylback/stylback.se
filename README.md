@@ -26,7 +26,24 @@ stylback-se
 └── README.md
 ```
 
-# NOTE: WORK IN PROGRESS BELOW
+This `README.md` covers the general areas of self-hosting your own website with Jekyll, as well as some tips and tricks. `/dev/README.md` cover some of the areas for development while `/prod/README.md` covers some of the areas for deployment of a production instance of the website.
+
+<details><summary>Work in progress</summary>
+<p>
+
+## Jekyll
+Here I will write about some Jekyll-specific things, such as templates and code highlighting.
+
+## Dark mode toggle
+Here I will write about the dark/light mode toggle built in JavaScript/CSS.
+
+## Robots.txt
+Here I will write about `robots.txt`.
+
+## Security
+Here I will write about some security considerations, such as `security.txt`, scanning Docker images for CVE's, HTTP security headers and such.
+
+# Old drafts below
 
 ## Working with Jekyll
 Ever looked at a website and seen a colorful block of code with syntax highlighting? Ever wondered how they do that?
@@ -174,4 +191,5 @@ gpg: Good signature from "Firstname lastname <name@domain.tld>" [ultimate]
 
 If the signature is good, paste the contents into your file and upload the file to your top-level directory.
 
-## Tips and Tricks
+</p>
+</details>

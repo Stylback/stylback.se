@@ -107,7 +107,7 @@ To continue, we use the `environment` keyword to specify what environment variab
 
 > If you're interested and want to learn more about Docker compose, you can read about `compose.yml` in the [official documentation](https://docs.docker.com/compose/).
 
-# How does the `nginx.conf` file work?
+## How does the `nginx.conf` file work?
 `nginx.conf` is a [configuration file](https://nginx.org/en/docs/beginners_guide.html#conf_structure) for the nginx web server. Let us take a look at the `nginx.conf` for the production instance of the website:
 
 ```conf
