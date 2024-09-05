@@ -112,7 +112,7 @@ else
       echo "Saved ${FILE##*/} to $OUTPUT_PATH/${BASENAME%.*}.jpg"
 	
     elif [[ $FILE == *.mp4 ]]; then
-      HandBrakeCLI -e VP9 -E opus -f av_webm -i --two-pass $FILE -o $OUTPUT_PATH/"${BASENAME%.*}.webm"
+      HandBrakeCLI -e VP9 -E opus -f av_webm -Y 1080 -X 1080 --non-anamorphic -q 60 -i $FILE -o $OUTPUT_PATH/"${BASENAME%.*}.webm"
       echo "Saved ${FILE##*/} to $OUTPUT_PATH/${BASENAME%.*}.webm"
 	
     else
@@ -127,11 +127,11 @@ The overall logic is as thus:
 2. Check if the destination directory (`$OUTPUT_PATH`) exists and create it if it doesn't.
 3. For each file in the source directory, check if the file extension matches any of the pre-defined options and "reduce" them if they do.
 
-We use parameter expansion to reference the file in different capacities; with full path (`/home/user/Pictures/foo.jpg`), without path (`foo.jpg`) or basename only (`foo`). We always encapsulate paths and filenames with double quotes (`""`) in case are [whitespace characters](https://en.wikipedia.org/wiki/Whitespace_character) in them.
+We use parameter expansion to reference the file in different capacities; with full path (`/home/user/Pictures/foo.jpg`), without path (`foo.jpg`) or basename only (`foo`). We always encapsulate paths and filenames with double quotes (`""`) in case there are [whitespace characters](https://en.wikipedia.org/wiki/Whitespace_character) in them.
 
 Images are reduced by using the `convert` command from ImageMagick. Image resolution will be re-scaled to a 777600 pixel area (1080x720), the exact dimensions of which will depend on the aspect ratio of the image. We use the `-strip` option to remove metadata and `-auto-orient` to maintain rotation after the fact.
 
-Videos are reduced by using the `HandBrakeCLI` command. The [`.webm`](https://en.wikipedia.org/wiki/WebM) is designed to be used as a container for HTML video and is perfect for our usecase. With the exception of `AV1` (hardware acceleration support for `AV1` is still lacking), `VP9/Opus` exhibits the most efficient compression supported by the `.webm` container. We specify the `--two-pass` option to increase the video quality at no extra storage cost.
+Videos are reduced by using the `HandBrakeCLI` command. The [`.webm`](https://en.wikipedia.org/wiki/WebM) container is designed for HTML video and is perfect for our usecase. With the exception of `AV1` (hardware acceleration support for `AV1` is still lacking), `VP9/Opus` exhibits the most efficient compression supported by `.webm`. With `-Y 1080 -X 1080 --non-anamorphic` we specify that the video must be scaled down to maximum 1080 pixels in any direction WHILE keeping its aspect ratio (effectively we get something similar to 720p HD). `-q 60` means we want the output to be on quality setting "60" (compression increases non-linear with this setting), which is a relatively high compression but works well for our usecase. With these settings, a 120 MB `.mp4` video (32 seconds, 25 fps, 1920 × 1080, H.265/MPEG-4) was compressed to a 11.8 MB `.webm` (at 608 × 1080, 60 fps).
 
 > If you're interested and want to learn more, have a look at the official documentation for [ImageMagick](https://www.imagemagick.org/script/convert.php), [HandbrakeCLI](https://handbrake.fr/docs/en/latest/cli/command-line-reference.html) and [Parameter Expansion](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html).
 

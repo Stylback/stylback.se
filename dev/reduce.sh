@@ -47,7 +47,7 @@ else
       echo "Saved ${FILE##*/} to $OUTPUT_PATH/${BASENAME%.*}.jpg"
 	
     elif [[ $FILE == *.mp4 ]]; then
-      HandBrakeCLI -e VP9 -E opus -f av_webm -i --two-pass $FILE -o $OUTPUT_PATH/"${BASENAME%.*}.webm"
+      HandBrakeCLI -e VP9 -E opus -f av_webm -Y 1080 -X 1080 --non-anamorphic -q 60 -i $FILE -o $OUTPUT_PATH/"${BASENAME%.*}.webm"
       echo "Saved ${FILE##*/} to $OUTPUT_PATH/${BASENAME%.*}.webm"
 	
     else
